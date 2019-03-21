@@ -1,0 +1,159 @@
+/* Archive
+----------------------------------------------- */
+/* Widget
+----------------------------------------------- */
+ol.azrcrv-pa-widget-ordered-list {
+	margin:-6px 0 5px;
+	padding:0;
+	list-style:none;
+	overflow:hidden;
+	width:100%;
+}
+ol.azrcrv-pa-widget-ordered-list li {
+    display:inline-block;
+    float:left;
+    width:18px;
+    height:40px;
+    border:1px solid white;
+    margin-left:1px;
+    background:#007FFF;
+}
+ol.azrcrv-pa-widget-ordered-list li.azrcrv-pa-widget-empty {
+    background:rgba(246, 248, 231, 0.5);
+}
+ol.azrcrv-pa-widget-ordered-list li a {
+    display:inline-block;
+    width:100%;
+    height:30px;
+    background:none;
+    padding:0;
+}
+ol.azrcrv-pa-widget-ordered-list li a:hover {
+    border-radius:0;
+    background:inherit;
+}
+span.azrcrv-pa-widget-bar-wrap {
+    width:100%;
+    height:100%;
+    zbackground:#F6F8E8;
+    display:block;
+}
+span.azrcrv-pa-widget-bar {
+    width:100%;
+    background:#F6F8E8;
+    display:block;
+}
+ol.azrcrv-pa-widget-ordered-list li.azrcrv-pa-widget-not-empty:hover {
+   background:#007FFF;
+}
+span.azrcrv-pa-widget-label {
+    display:block;
+    width:100%;
+    height:10px;
+    font-size:10px;
+    text-align:center;
+    line-height:2px;
+    color:transparent;
+    padding:2px 0px;
+}
+ol.azrcrv-pa-widget-ordered-list li.azrcrv-pa-widget-not-empty:hover span.azrcrv-pa-widget-label {
+    color:white;
+}
+.azrcrv-pa-widget-archive-year-label {
+    font-size:12px;
+    font-weight:bold;
+    color:#007FFF;
+    padding-left:2px;
+}
+.azrcrv-pa-widget-archive-year{
+	width: 250px;
+	margin: auto;
+}
+.azrcrv-pa-widget-archive-year:hover .azrcrv-pa-widget-archive-year-label {
+    color:#333;
+}
+.azrcrv-pa-widget-archive-year-count {
+    display:none;
+}
+.azrcrv-pa-widget-archive-year:hover .azrcrv-pa-widget-archive-year-count {
+    display:inline;
+    margin-left:30px;
+    color:#8CC665;
+}
+/* Page
+----------------------------------------------- */
+ol.azrcrv-pa-page-ordered-list {
+	margin:-6px 0 5px;
+	padding:0;
+	list-style:none;
+	overflow:hidden;
+	width:100%;
+}
+ol.azrcrv-pa-page-ordered-list li {
+    display:inline-block;
+    float:left;
+    width:50px;
+    height:100px;
+    border:1px solid white;
+    margin-left:3px;
+    background:#007FFF;
+}
+ol.azrcrv-pa-page-ordered-list li.azrcrv-pa-page-empty {
+    background:rgba(246, 248, 231, 0.5);
+}
+ol.azrcrv-pa-page-ordered-list li a {
+    display:inline-block;
+    width:100%;
+    height:75px;
+    background:none;
+    padding:0;
+}
+ol.azrcrv-pa-page-ordered-list li a:hover {
+    border-radius:0;
+    background:inherit;
+}
+span.azrcrv-pa-page-bar-wrap {
+    width:100%;
+    height:100%;
+    zbackground:#F6F8E8;
+    display:block;
+}
+span.azrcrv-pa-page-bar {
+    width:100%;
+    background:#F6F8E8;
+    display:block;
+}
+ol.azrcrv-pa-page-ordered-list li.azrcrv-pa-page-not-empty:hover {
+   background:#007FFF;
+}
+span.azrcrv-pa-page-label {
+    display:block;
+    width:100%;
+    height:20px;
+    font-size:20px;
+    text-align:center;
+    line-height:4px;
+    color:transparent;
+    padding:4px 0px;
+}
+ol.azrcrv-pa-page-ordered-list li.azrcrv-pa-page-not-empty:hover span.azrcrv-pa-page-label {
+    color:white;
+}
+.azrcrv-pa-page-archive-year-label {
+    font-size:24px;
+    font-weight:bold;
+    color:#007FFF;
+    padding-left:4px;
+}
+.azrcrv-pa-page-archive-year:hover .azrcrv-pa-page-archive-year-label {
+    color:#333;
+}
+.azrcrv-pa-page-archive-year-count {
+    display:none;
+}
+.azrcrv-pa-page-archive-year:hover .azrcrv-pa-page-archive-year-count {
+    display:inline;
+    font-size:16px;
+    margin-left:60px;
+    color:#8CC665;
+}
