@@ -4,7 +4,7 @@ Tags: post, posts, archive, page, widget
 Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
 Donate link: https://development.azurecurve.co.uk/support-development/
 Requires at least: 1.0.0
-Tested up to: 1.0.0
+Tested up to: 1.0.1
 Requires PHP: 5.6
 Stable tag: trunk
 License: GPLv2 or later
@@ -24,6 +24,8 @@ To install the Post Archive plugin:
 
 == Changelog ==
 Changes and feature additions for the Post Archive plugin:
+= 1.0.1 =
+* Fix bug in shortcode output.
 = 1.0.0 =
 * First version for ClassicPress forked from azurecurve Post Archive WordPress Plugin.
 

@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Post Archive
  * Description: Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive
@@ -323,6 +323,8 @@ class azrcrv_pa_register_archive extends WP_Widget {
 function azrcrv_pa_display_shortcode($atts){
 	global $wpdb;
 	
+	$output = '';
+	
 	$where = "WHERE post_type = 'post' AND post_status = 'publish'";
 	$query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY YEAR DESC, MONTH ASC";
 	$_archive = $wpdb->get_results($query);
@@ -343,34 +345,36 @@ function azrcrv_pa_display_shortcode($atts){
 		$max = max($max, $data->posts);
 	}
 	unset($_archive);
-
+	
 	for ($year = $last_year; $year >= $first_year; $year--){
-		echo '<div class="azrcrv-pa-page-archive-year">';
-		echo '<span class="azrcrv-pa-page-archive-year-label">'.$year;
+		$output .= '<div class="azrcrv-pa-page-archive-year">';
+		$output .=  '<span class="azrcrv-pa-page-archive-year-label">'.$year;
 		if(isset($year_total[$year])){
-			echo '<span class="azrcrv-pa-page-archive-year-count">'.$year_total[$year].' '.esc_html__('posts', 'post-archive').'</span>';
+			$output .=  '<span class="azrcrv-pa-page-archive-year-count">'.$year_total[$year].' '.esc_html__('posts', 'post-archive').'</span>';
 		}
-		echo '</span>';
-		echo '<ol class="azrcrv-pa-page-ordered-list">';
+		$output .=  '</span>';
+		$output .=  '<ol class="azrcrv-pa-page-ordered-list">';
 		for ($month = 1; $month <= 12; $month++){
 			$num = isset($archive[ $year ][ $month ]) ? $archive[ $year ][ $month ] : 0;
 			$empty = $num ? 'azrcrv-pa-page-not-empty' : 'azrcrv-pa-page-empty';
-			echo "<li class='$empty'>";
+			$output .=  "<li class='$empty'>";
 			$height = 100 - max(floor($num / $max * 100), 20);
 			if($num){
 				$url = get_month_link($year, $month);
 				$m = str_pad($month, 2, "0", STR_PAD_LEFT);
-				echo "<a href='".esc_url($url)."' title='$m/$year : $num ".esc_html__('posts', 'post-archive')."'><span class='azrcrv-pa-page-bar-wrap'><span class='azrcrv-pa-page-bar' style='height:$height%'></span></span>";
-				echo "<span class='azrcrv-pa-page-label'>".$m."</span>";
-				echo "</a>";
+				$output .=  "<a href='".esc_url($url)."' title='$m/$year : $num ".esc_html__('posts', 'post-archive')."'><span class='azrcrv-pa-page-bar-wrap'><span class='azrcrv-pa-page-bar' style='height:$height%'></span></span>";
+				$output .=  "<span class='azrcrv-pa-page-label'>".$m."</span>";
+				$output .=  "</a>";
 			}
-			echo '</li>';
+			$output .=  '</li>';
 		}
-		echo '</ol>';
-		echo "</div>";
+		$output .=  '</ol>';
+		$output .=  "</div>";
 	}
 	// Reset post data query
 	wp_reset_query();
+	
+	return $output;
 }
 
 ?>
