@@ -24,6 +24,9 @@ To install the Post Archive plugin:
 
 == Changelog ==
 Changes and feature additions for the Post Archive plugin:
+= 1.0.2 =
+* Update azurecurve menu for easier maintenance.
+* Move require of azurecurve menu below security check.
 = 1.0.1 =
 * Fix bug in shortcode output.
 = 1.0.0 =
