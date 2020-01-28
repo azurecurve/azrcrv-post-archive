@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Post Archive
  * Description: Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
- * Version: 1.0.2
+ * Version: 1.1.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive
@@ -24,6 +24,10 @@ if (!defined('ABSPATH')){
 
 // include plugin menu
 require_once(dirname( __FILE__).'/pluginmenu/menu.php');
+register_activation_hook(__FILE__, 'azrcrv_create_plugin_menu_pa');
+
+// include update client
+require_once(dirname(__FILE__).'/libraries/updateclient/UpdateClient.class.php');
 
 /**
  * Setup registration activation hook, actions, filters and shortcodes.
@@ -36,6 +40,7 @@ add_action('admin_menu', 'azrcrv_pa_create_admin_menu');
 add_action('wp_enqueue_scripts', 'azrcrv_pa_load_css');
 add_action('widgets_init', 'azrcrv_pa_create_widget');
 //add_action('the_posts', 'azrcrv_pa_check_for_shortcode');
+add_action('plugins_loaded', 'azrcrv_pa_load_languages');
 
 // add filters
 add_filter('plugin_action_links', 'azrcrv_pa_add_plugin_action_link', 10, 2);
@@ -45,6 +50,17 @@ add_shortcode('post-archive', 'azrcrv_pa_display_shortcode');
 add_shortcode('posts-archive', 'azrcrv_pa_display_shortcode');
 add_shortcode('POST-ARCHIVE', 'azrcrv_pa_display_shortcode');
 add_shortcode('POSTS-ARCHIVE', 'azrcrv_pa_display_shortcode');
+
+/**
+ * Load language files.
+ *
+ * @since 1.0.0
+ *
+ */
+function azrcrv_pa_load_languages() {
+    $plugin_rel_path = basename(dirname(__FILE__)).'/languages';
+    load_plugin_textdomain('azrcrv-pa', false, $plugin_rel_path);
+}
 
 /**
  * Check if shortcode on current page and then load css and jqeury.
@@ -146,7 +162,7 @@ function azrcrv_pa_display_options(){
 	$options = get_option('azrcrv-pa');
 	?>
 	<div id="azrcrv-pa-general" class="wrap">
-			<h2><?php echo esc_html(get_admin_page_title()); ?></h2>
+			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
 		<p>
 			<?php esc_html_e('The Posts Archive plugin allows a post archive to be displayed using the plugins widget or in posts and pages through the use of the <strong>post-archive</strong> shortcode. ', 'post-archive'); ?>
 		</p>
