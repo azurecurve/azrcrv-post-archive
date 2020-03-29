@@ -3,10 +3,10 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Post Archive
  * Description: Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
- * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive
+ * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
  * Text Domain: post-archive
  * Domain Path: /languages
  * ------------------------------------------------------------------------------
@@ -123,7 +123,7 @@ function azrcrv_pa_add_plugin_action_link($links, $file){
 	}
 
 	if ($file == $this_plugin){
-		$settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=azrcrv-pa">'.esc_html__('Settings' ,'post-archive').'</a>';
+		$settings_link = '<a href="'.get_bloginfo('wpurl').'/wp-admin/admin.php?page=azrcrv-pa"><img src="'.plugins_url('/pluginmenu/images/Favicon-16x16.png', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'post-archive').'</a>';
 		array_unshift($links, $settings_link);
 	}
 
