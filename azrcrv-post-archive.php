@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Post Archive
  * Description: Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
- * Version: 1.2.0
+ * Version: 1.3.0
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
@@ -250,11 +250,11 @@ class azrcrv_pa_register_archive extends WP_Widget {
 	function form($instance){
 		// Retrieve previous values from instance
 		// or set default values if not present
-		$widget_title = (!empty($instance['azc_pa_title']) ? 
-							esc_attr($instance['azc_pa_title']) :
-							esc_html__('Posts Archive', 'post-archive'));
+		$widget_title = (!empty($instance['azc_pa_title']) ? esc_attr($instance['azc_pa_title']) : esc_attr__('Posts Archive', 'post-archive'));
+		$widget_years = (!empty($instance['azc_pa_years']) ? esc_attr($instance['azc_pa_years']) : 10);
+		$widget_footer_text = (!empty($instance['azc_pa_footer_text']) ? stripslashes($instance['azc_pa_footer_text']) : '');
 		?>
-
+		
 		<!-- Display field to specify title  -->
 		<p>
 			<label for="<?php echo 
@@ -265,7 +265,31 @@ class azrcrv_pa_register_archive extends WP_Widget {
 					name="<?php echo $this->get_field_name('azc_pa_title'); ?>"
 					value="<?php echo $widget_title; ?>" />			
 			</label>
+		</p>
+		
+		<!-- Display field to number of years  -->
+		<p>
+			<label for="<?php echo 
+						$this->get_field_id('azc_pa_years'); ?>">
+			<?php echo 'Widget Years:'; ?>			
+			<input type="number" min=1 step=1
+					id="<?php echo $this->get_field_id('azc_pa_years'); ?>"
+					name="<?php echo $this->get_field_name('azc_pa_years'); ?>"
+					value="<?php echo $widget_years; ?>" class="small-text" />			
+			</label>
 		</p> 
+		
+		<!-- Display field to specify footer text  -->
+		<p>
+			<label for="<?php echo 
+						$this->get_field_id('azc_pa_footer_text'); ?>">
+			<?php echo 'Widget Footer text:'; ?>			
+			<input type="text" 
+					id="<?php echo $this->get_field_id('azc_pa_footer_text'); ?>"
+					name="<?php echo $this->get_field_name('azc_pa_footer_text'); ?>"
+					value="<?php echo $widget_footer_text; ?>" />			
+			</label>
+		</p>
 
 		<?php
 	}
@@ -278,8 +302,11 @@ class azrcrv_pa_register_archive extends WP_Widget {
 	function update($new_instance, $old_instance){
 		$instance = $old_instance;
 
-		$instance['azc_pa_title'] =
-			strip_tags($new_instance['azc_pa_title']);
+		$instance['azc_pa_title'] = sanitize_text_field($new_instance['azc_pa_title']);
+			
+		$instance['azc_pa_years'] = sanitize_text_field(intval($new_instance['azc_pa_years']));
+
+		$instance['azc_pa_footer_text'] = wp_kses($new_instance['azc_pa_footer_text'], wp_kses_allowed_html('data'));
 
 		return $instance;
 	}
@@ -296,13 +323,13 @@ class azrcrv_pa_register_archive extends WP_Widget {
 		// Display widget title
 		echo $before_widget;
 		echo $before_title;
-		$widget_title = (!empty($instance['azc_pa_title']) ? 
-					esc_attr($instance['azc_pa_title']) :
-					esc_html__('Posts Archive', 'post-archive'));
+		$widget_title = (!empty($instance['azc_pa_title']) ? esc_attr($instance['azc_pa_title']) : esc_html__('Posts Archive', 'post-archive'));
 		echo apply_filters('widget_title', $widget_title);
 		echo $after_title; 
 
 		global $wpdb;
+		$widget_years = (!empty($instance['azc_pa_years']) ? esc_attr($instance['azc_pa_years']) : esc_attr(10));
+		$widget_footer_text = (!empty($instance['azc_pa_footer_text']) ? stripslashes($instance['azc_pa_footer_text']) : '');
 		
 		$where = "WHERE post_type = 'post' AND post_status = 'publish'";
 		$query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY YEAR DESC, MONTH ASC";
@@ -310,7 +337,9 @@ class azrcrv_pa_register_archive extends WP_Widget {
 
 		$last_year  = (int) $_archive[0]->year;
 		$first_year = (int) $_archive[ count($_archive) - 1 ]->year;
-
+		if ($first_year < ($last_year - $widget_years + 1)){
+			$first_year = $last_year - $widget_years + 1;
+		}
 		$archive    = array();
 		$max        = 0;
 		$year_total = array();
@@ -324,7 +353,7 @@ class azrcrv_pa_register_archive extends WP_Widget {
 			$max = max($max, $data->posts);
 		}
 		unset($_archive);
-
+		
 		for ($year = $last_year; $year >= $first_year; $year--){
 			echo '<div class="azrcrv-pa-widget-archive-year">';
 			echo '<span class="azrcrv-pa-widget-archive-year-label">'.$year;
@@ -349,6 +378,13 @@ class azrcrv_pa_register_archive extends WP_Widget {
 			}
 			echo '</ol>';
 			echo "</div>";
+		}
+		if (strlen($widget_footer_text) > 0){
+			echo '<p>
+						<span class="azrcrv-pa-footer-text">'
+						.$widget_footer_text.
+						'</span>
+					</p>';
 		}
 		// Reset post data query
 		wp_reset_query();
