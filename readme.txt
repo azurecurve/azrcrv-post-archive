@@ -1,12 +1,12 @@
 === Post Archive ===
 
 Description:	Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
-Version:		1.3.0
+Version:		1.3.1
 Tags:			post, posts, archive, page, widget
 Author:			azurecurve
 Author URI:		https://development.azurecurve.co.uk/
 Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
-Download link:	https://github.com/azurecurve/azrcrv-post-archive/releases/download/v1.3.0/azrcrv-post-archive.zip
+Download link:	https://github.com/azurecurve/azrcrv-post-archive/releases/download/v1.3.1/azrcrv-post-archive.zip
 Donate link:	https://development.azurecurve.co.uk/support-development/
 Requires PHP:	5.6
 Requires:		1.0.0
@@ -51,6 +51,9 @@ This plugin is developed for ClassicPress, but will likely work on WordPress.
 
 # Changelog
 
+### [Version 1.3.1](https://github.com/azurecurve/azrcrv-post-archive/releases/tag/v1.3.1)
+ * Update azurecurve menu and logo.
+ 
 ### [Version 1.3.0](https://github.com/azurecurve/azrcrv-post-archive/releases/tag/v1.3.0)
  * Add limit to number of years in widget.
  * Add field to store text at bottom of widget (such as link to archive page).

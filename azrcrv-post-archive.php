@@ -3,7 +3,7 @@
  * ------------------------------------------------------------------------------
  * Plugin Name: Post Archive
  * Description: Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
- * Version: 1.3.0
+ * Version: 1.3.1
  * Author: azurecurve
  * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
  * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
@@ -150,7 +150,7 @@ function azrcrv_pa_add_plugin_action_link($links, $file){
 	}
 
 	if ($file == $this_plugin){
-		$settings_link = '<a href="'.admin_url('admin.php?page=azrcrv-pa').'"><img src="'.plugins_url('/pluginmenu/images/Favicon-16x16.png', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'post-archive').'</a>';
+		$settings_link = '<a href="'.admin_url('admin.php?page=azrcrv-pa').'"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-top: 2px; margin-right: -5px; height: 16px; width: 16px;" alt="azurecurve" />'.esc_html__('Settings' ,'post-archive').'</a>';
 		array_unshift($links, $settings_link);
 	}
 
@@ -189,7 +189,12 @@ function azrcrv_pa_display_options(){
 	$options = get_option('azrcrv-pa');
 	?>
 	<div id="azrcrv-pa-general" class="wrap">
-			<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+		<h1>
+			<?php
+				echo '<a href="https://development.azurecurve.co.uk/classicpress-plugins/"><img src="'.plugins_url('/pluginmenu/images/logo.svg', __FILE__).'" style="padding-right: 6px; height: 20px; width: 20px;" alt="azurecurve" /></a>';
+				esc_html_e(get_admin_page_title());
+			?>
+		</h1>
 		<p>
 			<?php esc_html_e('The Posts Archive plugin allows a post archive to be displayed using the plugins widget or in posts and pages through the use of the <strong>post-archive</strong> shortcode. ', 'post-archive'); ?>
 		</p>
