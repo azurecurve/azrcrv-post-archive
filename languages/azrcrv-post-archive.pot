@@ -1,52 +1,53 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Post Archive\n"
-"POT-Creation-Date: 2019-02-24 18:39+0000\n"
+"POT-Creation-Date: 2021-12-27 18:10+0000\n"
 "PO-Revision-Date: 2019-02-24 18:39+0000\n"
 "Last-Translator: \n"
-"Language-Team: https://translate.azurecurve.co.uk/\n"
+"Language-Team: translate@azurecurve.co.uk\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.1\n"
-"X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: azrcrv-post-archive.php\n"
 
-#: azrcrv-post-archive.php:111
+#: azrcrv-post-archive.php:153
 msgid "Settings"
 msgstr ""
 
-#: azrcrv-post-archive.php:128
+#: azrcrv-post-archive.php:170
 msgid "Post Archive Settings"
 msgstr ""
 
-#: azrcrv-post-archive.php:129
+#: azrcrv-post-archive.php:171
 msgid "Post Archive"
 msgstr ""
 
-#: azrcrv-post-archive.php:143
+#: azrcrv-post-archive.php:185
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: azrcrv-post-archive.php:152
+#: azrcrv-post-archive.php:199
 msgid ""
 "The Posts Archive plugin allows a post archive to be displayed using the "
 "plugins widget or in posts and pages through the use of the <strong>post-"
 "archive</strong> shortcode. "
 msgstr ""
 
-#: azrcrv-post-archive.php:187
+#: azrcrv-post-archive.php:234
 msgid "Displays Posts Archive"
 msgstr ""
 
-#: azrcrv-post-archive.php:213 azrcrv-post-archive.php:259
+#: azrcrv-post-archive.php:331
 msgid "Posts Archive"
 msgstr ""
 
-#: azrcrv-post-archive.php:290 azrcrv-post-archive.php:302
-#: azrcrv-post-archive.php:352 azrcrv-post-archive.php:364
+#: azrcrv-post-archive.php:366 azrcrv-post-archive.php:378
+#: azrcrv-post-archive.php:437 azrcrv-post-archive.php:449
 msgid "posts"
 msgstr ""
