@@ -1,14 +1,18 @@
 <?php
 /**
  * ------------------------------------------------------------------------------
- * Plugin Name: Post Archive
- * Description: Posts Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
- * Version: 1.3.4
- * Author: azurecurve
- * Author URI: https://development.azurecurve.co.uk/classicpress-plugins/
- * Plugin URI: https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
- * Text Domain: post-archive
- * Domain Path: /languages
+ * Plugin Name:		Post Archive
+ * Description:		Post Archive (multi-site compatible) based on Ozh Tweet Archive Theme; archive can be displayed in a widget, post or page.
+ * Version:			1.3.5
+ * Requires CP:		1.0
+ * Author:			azurecurve
+ * Author URI:		https://development.azurecurve.co.uk/classicpress-plugins/
+ * Plugin URI:		https://development.azurecurve.co.uk/classicpress-plugins/post-archive/
+ * Donate link:		https://development.azurecurve.co.uk/support-development/
+ * Text Domain:		post-archive
+ * Domain Path: 	/assets/languages
+ * License: 		GPLv2 or later
+ * License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
  * ------------------------------------------------------------------------------
  * This is free software released under the terms of the General Public License,
  * version 2, or later. It is distributed WITHOUT ANY WARRANTY; without even the
